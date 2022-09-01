@@ -1,0 +1,33 @@
+﻿@model SickErrand
+ 
+<nav>
+  <p>
+    <a asp-controller="Employee" asp-action="StartEmployee">Sjukanmälan</a> / <strong>Vård av barn</strong>
+    <a asp-controller="Account" asp-action="Logout" class="right">Logga ut</a>
+  </p>
+</nav>
+
+<main>
+    <h2>Vård av sjukt barn</h2>
+    <!-- 6.1. Formulär innanför form-element med method=”post”-->
+    <!--6.2. asp-antiforgery attribut i form-elementet-->
+    <!--2.3. Undvik auto-complete-->
+    <form asp-controller="Employee" asp-action="ReportSickChild" asp-antiforgery="true" autocomplete="off" method="post">
+        <div asp-validation-summary="All"></div>
+        <p>
+            <label asp-for="EmployeeID" class="text-black"></label><span class="text-danger">*</span>
+            <input asp-for="EmployeeID">
+        </p>
+        <p>
+            <label asp-for="ChildRefNo" class="text-black"></label><span class="text-danger">*</span>
+            <input asp-for="ChildRefNo">
+        </p>
+        <p>
+            <label asp-for="HomeFrom" class="text-black"></label><span class="text-danger">*</span>
+            <input asp-for="HomeFrom">
+        </p>
+        <p>
+            <input type="submit" class="btn" value="Skicka in">
+        </p>
+    </form>
+</main>
